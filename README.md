@@ -1,66 +1,74 @@
-## Foundry
+# Foundry ERC20
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+![Alt text](image.png)
 
-Foundry consists of:
+Contract CODE: https://sepolia.etherscan.io/address/0x8400afe076317d550224f6e9605808c020e9ae5d#code
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Quickstart
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+```
+git clone https://github.com/Solidityarchitect/foundry-erc20
+cd foundry-erc20
+forge install
+forge build
 ```
 
-### Test
+# Usage
 
-```shell
-$ forge test
+## OpenZeppelin
+
+[OpenZeppelin Contracts Docs](https://docs.openzeppelin.com/contracts/4.x/)
+<br><br>
+[OpenZeppelin GitHub Repo](https://github.com/OpenZeppelin/openzeppelin-contracts)
+<br>
+
+### Installing OpenZeppelin Contracts Package
+
+```bash
+forge install OpenZeppelin/openzeppelin-contracts --no-commit
 ```
 
-### Format
+## Start a local node
 
-```shell
-$ forge fmt
+```
+make anvil
 ```
 
-### Gas Snapshots
+## Deploy
 
-```shell
-$ forge snapshot
+This will default to your local node. You need to have it running in another terminal in order for it to deploy.
+
+```
+make deploy
 ```
 
-### Anvil
+## Deploy - Other Network
 
-```shell
-$ anvil
+[See below](#deployment-to-a-testnet-or-mainnet)
+
+## Testing
+
+We talk about 4 test tiers in the video.
+
+1. Unit
+2. Integration
+3. Forked
+4. Staging
+
+This repo we cover #1 and #3.
+
+```
+forge test
 ```
 
-### Deploy
+or
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+forge test --fork-url $SEPOLIA_RPC_URL
 ```
 
-### Cast
+### Test Coverage
 
-```shell
-$ cast <subcommand>
 ```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+forge coverage
 ```
